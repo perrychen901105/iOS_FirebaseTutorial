@@ -32,6 +32,8 @@ class GroceryListTableViewController: UITableViewController {
   var user: User!
   var userCountBarButtonItem: UIBarButtonItem!
   
+  let ref = FIRDatabase.database().reference(withPath: "grocery-items")
+  
   // MARK: UIViewController Lifecycle
   
   override func viewDidLoad() {
@@ -47,6 +49,25 @@ class GroceryListTableViewController: UITableViewController {
     navigationItem.leftBarButtonItem = userCountBarButtonItem
     
     user = User(uid: "FakeId", email: "hungry@person.food")
+    
+    ref.observe(.value, with: {
+      snapshot in
+      // 2
+      var newItems: [GroceryItem] = []
+      
+      // 3
+      for item in snapshot.children {
+        // 4
+        let groceryItem = GroceryItem(snapshot: item as! FIRDataSnapshot)
+        newItems.append(groceryItem)
+      }
+      
+      // 5
+      self.items = newItems
+      self.tableView.reloadData()
+    })
+    
+
   }
   
   // MARK: UITableView Delegate methods
@@ -107,15 +128,35 @@ class GroceryListTableViewController: UITableViewController {
                                   message: "Add an Item",
                                   preferredStyle: .alert)
     
-    let saveAction = UIAlertAction(title: "Save",
-                                   style: .default) { action in
-      let textField = alert.textFields![0] 
-      let groceryItem = GroceryItem(name: textField.text!,
-                                    addedByUser: self.user.email,
-                                    completed: false)
-      self.items.append(groceryItem)
-      self.tableView.reloadData()
+    let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
+      // 1
+      // Get the text field from the alert controller
+      guard let textField = alert.textFields?.first,
+        let text = textField.text else {return}
+      
+      // 2
+      // Using the current user's data, create a new GroceryItem that is not completed by default
+      let groceryItem = GroceryItem(name: text, addedByUser: self.user.email, completed: false)
+      
+      // 3
+      // Create a child reference using child(_:). The key value of this reference is the item;s name in
+      // lowercase, so when users add duplicate items
+      let groceryItemRef = self.ref.child(text.lowercased())
+      
+      // 4
+      // Use setValue(_:) to save data to the database. This method expects a dictionary. called toAnyObject() to turn it into a Dictionary.
+      groceryItemRef.setValue(groceryItem.toAnyObject())
     }
+    
+//    let saveAction = UIAlertAction(title: "Save",
+//                                   style: .default) { action in
+//      let textField = alert.textFields![0] 
+//      let groceryItem = GroceryItem(name: textField.text!,
+//                                    addedByUser: self.user.email,
+//                                    completed: false)
+//      self.items.append(groceryItem)
+//      self.tableView.reloadData()
+//    }
     
     let cancelAction = UIAlertAction(title: "Cancel",
                                      style: .default)
