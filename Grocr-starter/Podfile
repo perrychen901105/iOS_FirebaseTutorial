@@ -3,3 +3,10 @@ inhibit_all_warnings!
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
+
+platform :ios, '8.0'
+use_frameworks!
+target ‘Grocr’ do
+	pod 'SwiftyJSON'
+	pod "ObjectMapper+Realm"
+end

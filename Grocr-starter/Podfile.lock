@@ -32,11 +32,23 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
+  - ObjectMapper (2.0.0)
+  - ObjectMapper+Realm (0.1):
+    - ObjectMapper
+    - RealmSwift
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
+  - SwiftyJSON (3.1.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - ObjectMapper+Realm
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
@@ -49,5 +61,12 @@ SPEC CHECKSUMS:
   GoogleParsingUtilities: 30b3896f9ee167dc78747f013d3de157ced1cadf
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
+  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  ObjectMapper+Realm: dbcf666c2081d82dc527b054c574b9f3777df060
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 9cda1f321e909fdee49757cff290f4f0a69ba5c6
+
+COCOAPODS: 1.1.0.rc.2

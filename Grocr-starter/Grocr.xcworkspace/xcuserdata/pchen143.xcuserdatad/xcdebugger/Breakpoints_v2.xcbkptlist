@@ -42,13 +42,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Grocr/GroceryListTableViewController.swift"
-            timestampString = "496998372.730527"
+            timestampString = "497515203.164961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Grocr.GroceryListTableViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "Grocr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pchen143/Program/ios/Research/FireBase/Grocr-starter/Grocr/GroceryListTableViewController.swift"
+                  timestampString = "497515294.11409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "2882">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Grocr.GroceryListTableViewController.(viewDidLoad () -&gt; ()).(closure #2)"
+                  moduleName = "Grocr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pchen143/Program/ios/Research/FireBase/Grocr-starter/Grocr/GroceryListTableViewController.swift"
+                  timestampString = "497515294.116594"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "314">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

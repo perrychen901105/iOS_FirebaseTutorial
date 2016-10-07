@@ -21,6 +21,18 @@
  */
 
 import UIKit
+import RealmSwift
+
+class Dog: Object {
+  dynamic var name = ""
+  dynamic var age = 0
+}
+
+class Person: Object {
+  dynamic var name = ""
+  dynamic var picture: NSData? = nil
+  let dogs = List<Dog>()
+}
 
 class GroceryListTableViewController: UITableViewController {
 
@@ -34,6 +46,10 @@ class GroceryListTableViewController: UITableViewController {
   
   let ref = FIRDatabase.database().reference(withPath: "grocery-items")
   let usersRef = FIRDatabase.database().reference(withPath: "online")
+  
+
+  
+  
   
   // MARK: UIViewController Lifecycle
   
@@ -51,6 +67,28 @@ class GroceryListTableViewController: UITableViewController {
     
     user = User(uid: "FakeId", email: "hungry@person.food")
 
+    let myDog: Dog = Dog()
+    myDog.name = "Rex"
+    myDog.age = 1
+    
+    let realm  = try! Realm()
+    
+    let puppies = realm.objects(Dog.self).filter("age < 2")
+    print("=======> \(puppies.count)")
+    
+    try! realm.write {
+      realm.add(myDog)
+    }
+    
+    print("=======> \(puppies.count)")
+    
+    DispatchQueue(label: "background").async {
+      let realm = try! Realm()
+      let theDog = realm.objects(Dog.self).filter("age == 1").first
+      try! realm.write {
+        theDog!.age = 3
+      }
+    }
     // Retrive data from Firebase
 //    ref.observe(.value, with: {
 //      snapshot in
